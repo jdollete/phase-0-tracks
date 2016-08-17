@@ -23,3 +23,8 @@ li:first-child {
   font-weight: bold; /*Release 3.2.2 Question 3*/
   color: blue;
 }
+
+.featured {            /*just for fun*/
+  font-weight: bolder;
+  color: red;
+}
