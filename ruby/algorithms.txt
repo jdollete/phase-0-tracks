@@ -1,0 +1,43 @@
+- Robot will run process for each person that enters elevator
+- Robot request user for floor number
+- User inputs floor number
+- Robot will verify:
+  - Does the floor request fall in the range of floors available
+    - If floor is not available ask user again for input
+      - Loop back to parent
+    - If floor is available move on
+  - If requested floor is the current floor
+    - Tell User that they are on that floor
+      - Loop back to parent
+    - If floor is different move on
+- Robot will search for requested floor number:
+  - Assuming numbers start at the bottom left and goes upwards in order
+  - Robot checks bottom left value
+    - If value does not match up with user input move up one row
+      - Continue check until last row is checked
+      - If last row does not match go one column to the right, and first row
+      - Repeat until floor number matches user request
+      - Since floor availability check has been responded, it should not reach the final number without finding it
+        - Just in case it does: if final row/column has been reach with no match, ask user to verify number and search again
+  - Once number has been match
+    - Press button
+- Once floor has been reached
+  - Ask user if this is the correct floor
+    - If not repeat process
+    - If correct floor move on
+
+  
+Push ups
+- User in push up position
+  - User lowers until until chest is 5 inches from ground
+  - User pushes up
+  - Tired?
+    - Yes: Stand up
+    - No: Repeat cycle
+- Is this set number 3?
+  - Yes: Stop, workout over
+  - No: Take a break
+- User takes a break (start timer 2 minutes)
+  - Wait until 1:55 on time (10 seconds before 2 minutes)
+  - Start push up position
+  - Start loop
