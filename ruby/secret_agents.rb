@@ -38,9 +38,9 @@ encryptor(user_pass)
 # Set variable to alphabet with string input a-z
 # Go through each character in alphabet string, check the index of current letter against it
 puts "Password to decrypt:"
-user_decpt = gets.chomp
+user_decpt = gets.chomp.downcase
 
-def decryptor()
+def decryptor(user_decpt)
 	counter = 0
 	output = " "
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -52,14 +52,19 @@ def decryptor()
 		else
 # While
 			temp = user_decpt[counter]
+			# puts alphabet.index(temp)
 # Check alphabet index counter
-			output += alphabet.index(temp) - 1
+			ind = alphabet.index(temp)
+			output += alphabet[ind-1]
 			# alphabet.index(temp)
 
 
-
 		end
+
+		counter += 1
 	end
+puts output
+
 end
 
-decryptor
+decryptor(user_decpt)
