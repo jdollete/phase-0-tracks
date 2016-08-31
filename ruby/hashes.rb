@@ -43,8 +43,5 @@ if client_ver == "n"
 	client_data[client_update.to_sym] = client_update_info
 end
 
-p client_data
-
-
-
 # Print out updated hash
+p client_data
