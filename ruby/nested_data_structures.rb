@@ -37,10 +37,10 @@ m_shop = {
   cruiser: {
     suzuki: ['Boulevard C50',
       'Boulevard M90',
-      'Boulevard M109R']
+      'Boulevard M109R'],
     honda: ['Gold Wing F6B',
       'Fury',
-      'NM4']
+      'NM4'],
     kawasaki: ['Vulcan 1700',
       'Vulcan 900',
       'Vulcan S']
@@ -48,16 +48,15 @@ m_shop = {
   off_road: {
     suzuki: ['RMX450Z',
       'DR-Z125L',
-      'DR-Z70']
-    yamaha:
+      'DR-Z70'],
     kawasaki: ['KLX 140',
       'KLX 110']
   },
   maintainance: ['Oil Change',
     'Inspection',
     'Repairs',
-    'Modify']
-  },
+    'Modify'],
+
   assessories: {
     helmets: {
       full_face: ['Icon', 'Arai', 'Shoei'],
@@ -68,3 +67,8 @@ m_shop = {
     gloves: ['Icon', 'A-Star']
   },
 }
+
+p m_shop[:sport_bike][:suzuki][:sport]
+p m_shop[:assessories][:gloves][0]
+p m_shop[:sport_bike][:yamaha][:super_sport].reverse
+p m_shop[:cruiser][:suzuki][2].upcase
