@@ -27,11 +27,24 @@ client_data = {
 p client_data
 
 # Ask user if the information is correct
+puts "Is this  information correct? (y/n)"
+client_ver = gets.chomp.downcase
 
-# If Yes, ask which key they would like to redo
-
+# If no, ask which key they would like to redo
 # Change specific key
+# If "y" skip
+if client_ver == "n"
+	puts "Which information would you like to update?"
+	client_update = gets.chomp
 
-# If "none" skip
+	puts "What would you like to replace #{client_update} with?"
+	client_update_info = gets.chomp
+
+	client_data[client_update.to_sym] = client_update_info
+end
+
+p client_data
+
+
 
 # Print out updated hash
