@@ -11,22 +11,28 @@ agent_rev= agent_name.downcase.split(' ').reverse.join(' ').split('')
 p agent_rev
 
 agent_alias = []
+vowels = ['a', 'e', 'i', 'o', 'u']
 i = 0
+
 agent_rev.each do |letter|
-	vowels = ['a', 'e', 'i', 'o', 'u']
 
-  if letter == vowels[i]
+  if letter == 'a' || 'e' || 'i' || 'o' || 'u'
   	p letter
-    letter = vowels[i + 1]
+  	i_v = vowels.index(letter)
+  	letter = vowels[i_v + 1]
     p letter
-    agent_alias << letter
-    i += 1
+    agent_alias.insert(i, letter)
 
-  #elsif letter == vowels[4]
+
+  elsif letter == 'u'
+  	agent_alias.insert(i, vowels[0])
 
   else
-	agent_alias << letter
+	agent_alias.insert(i, letter)
+
   end
+  i += 1
+
 end
 
 
