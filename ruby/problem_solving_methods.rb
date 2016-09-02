@@ -14,17 +14,31 @@ end
 
 
 def fib(terms)
+  # 1st version
+  # fib_terms = []
+  # if terms == 1
+  #   fib_terms << 0
+  # elsif terms == 2
+  #   fib_terms << 0 << 1
+  # else
+  #   counter = 2
+  #   fib_terms << 0 << 1
+  #   while counter != terms
+  #     fib_terms << fib_terms[-1] + fib_terms[-2]
+  #     counter += 1
+  #   end
+  # end
+  # return fib_terms
+
+  # 2nd version - refactored
   fib_terms = []
-  if terms == 1
-    fib_terms << 0
-  elsif terms == 2
-    fib_terms << 0 << 1
-  else
-    counter = 2
-    fib_terms << 0 << 1
-    while counter != terms
+  terms.times do |counter|
+    if counter == 0
+      fib_terms << 0
+    elsif counter == 1
+      fib_terms  << 1
+    else
       fib_terms << fib_terms[-1] + fib_terms[-2]
-      counter += 1
     end
   end
   return fib_terms
@@ -34,11 +48,11 @@ end
 # Driver code
 
 # Search array print
-# number_array = [23, 5, 28, 87, 4, 8, 4, 10]
-# p search_array(number_array, 28)
-# p search_array(number_array, 87)
-# p search_array(number_array, 4)
-# p search_array(number_array, 100)
+number_array = [23, 5, 28, 87, 4, 8, 4, 10]
+p search_array(number_array, 28)
+p search_array(number_array, 87)
+p search_array(number_array, 4)
+p search_array(number_array, 100)
 
 
 # Fibonacci print
