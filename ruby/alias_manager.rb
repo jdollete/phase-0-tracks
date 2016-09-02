@@ -8,8 +8,13 @@
 # Combine both array elements into Combine
 # Until user inputs 'quit' keep asking for names
 
+# Store each agents real name and alias after each iteration
+# Once agent inputs 'quit' print out a statement of each real name and alias name
+
 puts "Agent, what is your name?"
 agent_name = gets.chomp
+
+all_agents = {}
 
 until agent_name == "quit"
 
@@ -48,7 +53,11 @@ until agent_name == "quit"
 
 	end
 
-	p agent_alias.join('').split(' ').map { |i| i.capitalize}.join(' ')
+	agent_alias_inp = agent_alias.join('').split(' ').map { |i| i.capitalize}.join(' ')
+
+	p agent_alias_inp
+
+	all_agents[:agent_name] = agent_alias_inp
 
 	puts "Agent, what is your name? (Or enter quit to exit program)"
 	agent_name = gets.chomp
