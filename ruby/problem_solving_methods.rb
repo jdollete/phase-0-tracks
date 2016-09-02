@@ -44,6 +44,32 @@ def fib(terms)
   return fib_terms
 end
 
+# Sorting method, takes an array
+# and returns sorted array
+def sort(array)
+  loop do
+    flag = false
+    array.each_index do |index|
+      break if array[index] == array.last
+      if array[index] > array[index + 1]
+        array[index], array[index + 1] = array[index + 1], array[index]
+        flag = true
+      end
+    end
+    break if flag == false
+  end
+  return array
+end
+
+#
+# sort_array = [12, 6, 90, 5, 16]
+# sort_array = [6, 12, 90, 5, 16]
+# sort_array = [6, 12, 5, 90, 16]
+# sort_array = [6, 12, 5, 16, 90]
+# sort_array = [6, 5, 12, 16, 90]
+# sort_array = [5, 6, 12, 16, 90]
+# sort_array = [5, 6, 12, 16, 90]
+
 
 # Driver code
 
@@ -60,4 +86,26 @@ p fib(1)
 p fib(2)
 p fib(3)
 p fib(10)
-p fib(100)
+p fib_100 = fib(100)
+puts "The number is the same!" if fib_100.last == 218922995834555169026
+# Sort array
+# 1 - Give an unsorted array to the sort Method
+# 2 - Method grabs the array and compares the first
+# two numbers and puts them in order, then move one index up
+# 3 - if end of array
+#   3a - if positions were change in the last full array cycle
+#   go back to line 2
+#   3b - if no numbers were changed return sorted array
+# Example to visualize iterations
+# sort_array = [12, 6, 90, 5, 16]
+# sort_array = [12, 6, 90, 5, 16]
+# sort_array = [6, 12, 90, 5, 16]
+# sort_array = [6, 12, 5, 90, 16]
+# sort_array = [6, 12, 5, 16, 90]
+# sort_array = [6, 5, 12, 16, 90]
+# sort_array = [5, 6, 12, 16, 90]
+# sort_array = [5, 6, 12, 16, 90]
+sort_array = [12, 6, 90, 5, 16]
+p sort(sort_array)
+sort_array2 = [12, 6, 90, 5, -16.3, -1, 3, 456.2, 12, 0]
+p sort(sort_array2)
