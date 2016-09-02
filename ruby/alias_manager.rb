@@ -57,8 +57,12 @@ until agent_name == "quit"
 
 	p agent_alias_inp
 
-	all_agents[:agent_name] = agent_alias_inp
+	all_agents[agent_name] = agent_alias_inp
 
 	puts "Agent, what is your name? (Or enter quit to exit program)"
 	agent_name = gets.chomp
+end
+
+all_agents.each do |real, fake|
+	puts "#{real} is also known as #{fake}!"
 end
