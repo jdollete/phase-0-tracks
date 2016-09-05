@@ -22,6 +22,7 @@ until agent_name == "quit"
 
 	agent_alias = []
 	vowels = ['a', 'e', 'i', 'o', 'u']
+	consonant = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
 	i = 0
 
 	agent_rev.each do |letter|
@@ -45,7 +46,11 @@ until agent_name == "quit"
 	  elsif letter == 'u'
 	  	agent_alias.insert(i, vowels[0])
 
-	  else
+		elsif letter == ' '
+		agent_alias.insert(i, letter)
+
+		else
+		letter = consonant[consonant.index(letter) + 1]
 		agent_alias.insert(i, letter)
 
 	  end
@@ -53,7 +58,7 @@ until agent_name == "quit"
 
 	end
 
-	agent_alias_inp = agent_alias.join('').split(' ').map { |i| i.capitalize}.join(' ')
+	agent_alias_inp = agent_alias.join('').split(' ').map { |i| i.capitalize}.join(' ') #titlize
 
 	p agent_alias_inp
 
