@@ -24,10 +24,15 @@ end
 # puts "Declare your second number: "
 # num2 = gets.to_i
 puts "What is your calculation?"
-user_inp = gets.chomp.gsub(/\s+/, "").split('')
-num1 = user_inp[0].to_i
-operator = user_inp[1]
-num2 = user_inp[2].to_i
+user_inp = gets.chomp
 
-calculate(num1, operator, num2)
+while user_inp != 'done'
+  user_calc = user_inp.gsub(/\s+/, "").split('')
+  num1 = user_calc[0].to_i
+  operator = user_calc[1]
+  num2 = user_calc[2].to_i
+  calculate(num1, operator, num2)
+  puts "What is your calculation?"
+  user_inp = gets.chomp
+end
 # calculate(4,'+',5)
