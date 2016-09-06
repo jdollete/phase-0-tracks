@@ -1,14 +1,14 @@
-# Species
+# Species ------------------------
 # Pit Lab
 
-# Characteristics
+# Characteristics ----------------
 # Fur Color: Varies
 # Eye Color: Varies
 # Fur Length: medium
 # Max Size: 90 lbs
 # Active Level: High
 
-# Behavior
+# Behavior -----------------------
 # Hyper
 # Fast
 # Loving
