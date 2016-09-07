@@ -65,3 +65,21 @@ end
 # p foods
 
 # pretty_print(foods)
+
+
+# Release 4: Reflect
+
+# What did you learn about pseudocode from working on this challenge?
+#   It helps organize the steps on how to write out your code and what it does. Sometimes you will write more than you need and would
+#   have to edit it along the way.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+#   Arrays are simple for making a list of data, but using hashes will be more efficient in pulling and pushing data.
+# What does a method return?
+#   It returns the like action done within the method.
+# What kind of things can you pass into methods as arguments?
+#   You pass in parameters and arguments.
+# How can you pass information between methods?
+#   By returning it on the initial method and using it as an argument in other methods.
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+#   One concept that was solidified is you are able to pass information between methods. It is still a little confusing because
+#   we have not done a lot of work doing this method.
