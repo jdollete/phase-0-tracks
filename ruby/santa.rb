@@ -26,14 +26,41 @@ class Santa
     puts "That was a good #{cookie}!"
   end
 
+  def celebrate_birthday(age)
+    age += 1
+    p age
+
+  end
+
+  def get_mad_at(reindeer_name)
+    @reindeer_ranking.delete(reindeer_name)
+    @reindeer_ranking << reindeer_name
+    p @reindeer_ranking
+
+  end
+
+  # getter method
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
+
+  #setter method def method=(para)
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
 end
 
 
 # Driver Code
-santa_con = Santa.new("male", "Filipino")
-santa_con.santa_info
-santa_con.speak
-santa_con.eat_milk_and_cookies("Chocolate Chip")
+# santa_con = Santa.new("male", "Filipino")
+# santa_con.santa_info
+# santa_con.speak
+# santa_con.eat_milk_and_cookies("Chocolate Chip")
 
 # santas = []
 # santas << Santa.new("agender", "black")
@@ -50,3 +77,8 @@ santa_con.eat_milk_and_cookies("Chocolate Chip")
 # example_gender.length.times do |i|
 #   santas << Santa.new(example_gender[i], example_ethnicities[i])
 # end
+
+# santa = Santa.new("male", "Filipino")
+# santa.celebrate_birthday(50)
+# santa.get_mad_at("Rudolf")
+# santa.gender = "Female"
