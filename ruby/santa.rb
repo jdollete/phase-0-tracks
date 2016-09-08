@@ -1,6 +1,8 @@
 # Method Code
 
 class Santa
+  attr_reader :ethnicity
+  attr_accessor :gender, :age
 
   def initialize(gender, ethnicity)
 
@@ -26,9 +28,9 @@ class Santa
     puts "That was a good #{cookie}!"
   end
 
-  def celebrate_birthday(age)
-    age += 1
-    p age
+  def celebrate_birthday
+    @age += 1
+    p @age
 
   end
 
@@ -40,18 +42,18 @@ class Santa
   end
 
   # getter method
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
-  end
+  # def age
+  #   @age
+  # end
+  #
+  # def ethnicity
+  #   @ethnicity
+  # end
 
   #setter method def method=(para)
-  def gender=(new_gender)
-    @gender = new_gender
-  end
+  # def gender=(new_gender)
+  #   @gender = new_gender
+  # end
 
 end
 
@@ -78,7 +80,9 @@ end
 #   santas << Santa.new(example_gender[i], example_ethnicities[i])
 # end
 
-# santa = Santa.new("male", "Filipino")
-# santa.celebrate_birthday(50)
-# santa.get_mad_at("Rudolf")
-# santa.gender = "Female"
+santa = Santa.new("male", "Filipino")
+santa.age = 50
+santa.celebrate_birthday
+santa.get_mad_at("Rudolf")
+santa.gender = "Female"
+p santa
