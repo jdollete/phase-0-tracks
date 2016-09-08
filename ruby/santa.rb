@@ -23,17 +23,30 @@ class Santa
   end
 
   def eat_milk_and_cookies(cookie)
-    puts "That was a good #{cookie}"
+    puts "That was a good #{cookie}!"
   end
 
 end
 
-santas = []
-genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 
 # Driver Code
-santa_con = Santa.new(genders[0], ethnicities[0])
+santa_con = Santa.new("male", "Filipino")
 santa_con.santa_info
 santa_con.speak
 santa_con.eat_milk_and_cookies("Chocolate Chip")
+
+# santas = []
+# santas << Santa.new("agender", "black")
+# santas << Santa.new("female", "Latino")
+# santas << Santa.new("bigender", "white")
+# santas << Santa.new("male", "Japanese")
+# santas << Santa.new("female", "prefer not to say")
+# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
+# santas << Santa.new("N/A", "N/A")
+
+# santas = []
+# example_gender = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+# example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+# example_gender.length.times do |i|
+#   santas << Santa.new(example_gender[i], example_ethnicities[i])
+# end
