@@ -80,9 +80,17 @@ end
 #   santas << Santa.new(example_gender[i], example_ethnicities[i])
 # end
 
-santa = Santa.new("male", "Filipino")
-santa.age = 50
-santa.celebrate_birthday
-santa.get_mad_at("Rudolf")
-santa.gender = "Female"
-p santa
+# santa = Santa.new("male", "Filipino")
+# santa.age = 50
+# santa.celebrate_birthday
+# santa.get_mad_at("Rudolf")
+# santa.gender = "Female"
+# p santa
+
+# Use provided array of example ethnicity and gender. Add more to the list.
+# Randomly select ethnicity and gender
+# Santa's age is between 0 - 140 at Randomly
+# No need to stor Santas in a data structure
+
+example_gender = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
