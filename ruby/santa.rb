@@ -1,10 +1,10 @@
 # Method Code
 
 class Santa
-  attr_reader :ethnicity
-  attr_accessor :gender, :age
+  attr_reader :reindeer_ranking
+  attr_accessor :gender, :age, :ethnicity
 
-  def initialize(gender, ethnicity)
+  def initialize#(gender, ethnicity)
 
     puts "Initializing Santa instance ..."
 
@@ -90,7 +90,17 @@ end
 # Use provided array of example ethnicity and gender. Add more to the list.
 # Randomly select ethnicity and gender
 # Santa's age is between 0 - 140 at Randomly
-# No need to stor Santas in a data structure
+# No need to store Santas in a data structure
 
 example_gender = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+
+santas = []
+5.times do
+  santa = Santa.new
+  santa.gender = example_gender.sample
+  santa.ethnicity = example_ethnicities.sample
+  santa.age = rand(140)
+  santas << santa
+end
+p santas
