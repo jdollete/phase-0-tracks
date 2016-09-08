@@ -93,14 +93,17 @@ end
 # No need to store Santas in a data structure
 
 example_gender = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Filipino", "Korean" "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 
 santas = []
-5.times do
+20.times do
   santa = Santa.new
   santa.gender = example_gender.sample
   santa.ethnicity = example_ethnicities.sample
   santa.age = rand(140)
   santas << santa
 end
-p santas
+
+santas.each_with_index do |santa_ins, i|
+  puts "Santa #{i + 1}: Gender: #{santa_ins.gender}, Ethnicity: #{santa_ins.ethnicity}, Age: #{santa_ins.age}"
+end
