@@ -11,13 +11,15 @@
         # Ask Player 1 User for word
         # Store word into a variable
         # Get length of word and store integer into a variable
+        # Print out how many letters available
+        # Show how many guesses player 2 has
 # output: String, integer
 
 # input: Player 2 User Inputs word to guess the main word
 # steps:
         # Ask player 2 for word input
         # Store guess word into a variable
-# output:
+# output: String
 
 # input:
 # steps:
@@ -34,3 +36,33 @@
 # input:
 # steps:
 # output:
+
+class Word_guess_game
+  attr_reader
+  attr_accessor :player1 :player2
+
+  def initialize
+    @player1_word = player1
+    @length = player1.length
+    @player2_guess = player2
+
+
+  end
+
+  def test
+    p @player1
+  end
+
+end
+
+# User Interface
+
+puts "Welcome to Guess That Word!!"
+puts "Player 1, input word to guess:"
+
+game1 = Word_guess_game.new
+game1.player1 = gets.chomp
+game1.test
+
+
+# Driver Code
