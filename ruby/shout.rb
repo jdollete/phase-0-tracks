@@ -15,8 +15,17 @@
 # p Shout.yell_angrily("What in the....")
 # p Shout.yell_happily("Congrats")
 
-module Shout
 
+
+
+# Method Code
+# Create module to shout
+# Create two classes of people who shouts
+
+module Shout
+  def shout_at(name, activity)
+    puts "#{name.upcase}, #{activity.upcase}!"
+  end
 end
 
 class Parent
@@ -26,3 +35,12 @@ end
 class Soldier
   include Shout
 end
+
+# Driver Code
+# Call out two instances
+
+mary = Parent.new
+mary.shout_at("Billy", "Go clean your room")
+
+captain = Soldier.new
+captain.shout_at("private", "give me 50 pushups")
