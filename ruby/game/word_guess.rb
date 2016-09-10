@@ -26,29 +26,50 @@
 # output:
 
 class Word_guess_game
-  attr_reader
-  attr_accessor :player1, :player2, :count, :game_over
+  attr_reader :history
+  attr_accessor :player1, :player2, :count, :game_over, :dashes
 
   def initialize
-    # @player1_word = player1
-    # @player2_guess = player2
     @game_over = false
     @complete = false
     @count = 0
+    @history = []
+
   end
-# Checks word if it matches
+
   def check_word
+    history << player2
+    p history
     if player1 != player2
       puts "That's not the word!"
-      @count += 1
+
+    	p1_index = dashes
+    	p1_split = player1.split('')
+    	p2_split = player2.split('')
+
+    	p2_split.each do |letter| # Compares all letters
+    	  if p1_split.include?(letter)
+    	  	match_letter = letter
+    	  	match_index = p1_split.index(letter)
+    	  	p1_index[match_index] = letter
+    	  end
+      end
+
+    	dashes = p1_index.join('') # Prints out what letter they got right
+      p "Hint: " + dashes
+
+      if history.include?(player2)
+        @count += 0
+      else
+        @count += 1
+      end
+
       @game_over
+
     else
       @game_over = true
     end
 
-    def incorrect(player1, player2)
-      p1_split = player1.split('')
-      p2_split = player2.split('')
   end
 
 end
@@ -59,7 +80,9 @@ puts "Welcome to Guess That Word!!"
 puts "Player 1, input word to guess:"
 
 game = Word_guess_game.new
-game.player1 = gets.chomp
+game.player1 = gets.chomp.downcase
+system "clear"
+game.dashes = ("-" * game.player1.length).split('')
 
 # Driver Code
 
@@ -69,7 +92,7 @@ while game.game_over != true
   if game.game_over != true && guesses != 0
     guesses = game.player1.length - game.count
     puts "Player 2, You have #{guesses}, Guess the word:"
-    game.player2 = gets.chomp
+    game.player2 = gets.chomp.downcase
     game.check_word
   elsif game.game_over != true && guesses == 0
     puts "You ran out of guesses!! GAME OVER!!"
