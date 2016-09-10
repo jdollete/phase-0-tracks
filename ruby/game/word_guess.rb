@@ -45,6 +45,10 @@ class Word_guess_game
     else
       @game_over = true
     end
+
+    def incorrect(player1, player2)
+      p1_split = player1.split('')
+      p2_split = player2.split('')
   end
 
 end
