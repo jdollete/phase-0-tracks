@@ -25,32 +25,25 @@
 # steps:
 # output:
 
-# input:
-# steps:
-# output:
-
-# input:
-# steps:
-# output:
-
-# input:
-# steps:
-# output:
-
 class Word_guess_game
-  attr_reader
-  attr_accessor :player1 :player2
+  # attr_reader :game_over
+  attr_accessor :player1, :player2, :count,:game_over
 
   def initialize
-    @player1_word = player1
-    @length = player1.length
-    @player2_guess = player2
-
-
+    # @player1_word = player1
+    # @player2_guess = player2
+    @game_over = false
+    @count = 0
   end
-
-  def test
-    p @player1
+# Checks word if it matches
+  def check_word
+    if player1 != player2
+      puts "That's not the word, try again!"
+      @count += 1
+      @game_over
+    else
+      @game_over = true
+    end
   end
 
 end
@@ -60,9 +53,25 @@ end
 puts "Welcome to Guess That Word!!"
 puts "Player 1, input word to guess:"
 
-game1 = Word_guess_game.new
-game1.player1 = gets.chomp
-game1.test
-
+game = Word_guess_game.new
+game.player1 = gets.chomp
 
 # Driver Code
+
+while game.game_over != true
+  guesses = game.player1.length - game.count
+  if game.game_over != true && guesses != 0
+    guesses = game.player1.length - game.count
+    puts "Player 2, You have #{guesses}, Guess the word:"
+    game.player2 = gets.chomp
+    game.check_word
+  elsif game.game_over != true && guesses == 0
+    puts "You ran out of guesses!! GAME OVER!!"
+    game.game_over = true
+  else
+    puts "You got it correct! Game over!"
+  end
+
+end
+# p game.game_over
+# puts "You got it correct! Game over!"
