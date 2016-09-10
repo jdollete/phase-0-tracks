@@ -26,19 +26,20 @@
 # output:
 
 class Word_guess_game
-  # attr_reader :game_over
-  attr_accessor :player1, :player2, :count,:game_over
+  attr_reader
+  attr_accessor :player1, :player2, :count, :game_over
 
   def initialize
     # @player1_word = player1
     # @player2_guess = player2
     @game_over = false
+    @complete = false
     @count = 0
   end
 # Checks word if it matches
   def check_word
     if player1 != player2
-      puts "That's not the word, try again!"
+      puts "That's not the word!"
       @count += 1
       @game_over
     else
@@ -60,6 +61,7 @@ game.player1 = gets.chomp
 
 while game.game_over != true
   guesses = game.player1.length - game.count
+
   if game.game_over != true && guesses != 0
     guesses = game.player1.length - game.count
     puts "Player 2, You have #{guesses}, Guess the word:"
@@ -68,10 +70,10 @@ while game.game_over != true
   elsif game.game_over != true && guesses == 0
     puts "You ran out of guesses!! GAME OVER!!"
     game.game_over = true
-  else
-    puts "You got it correct! Game over!"
   end
-
 end
+
+if game.game_over == true && guesses != 0
 # p game.game_over
-# puts "You got it correct! Game over!"
+ puts "You got it correct! Game over!"
+end
