@@ -40,6 +40,7 @@ class Word_guess_game
   def check_word
     history << player2
     p history
+    p player2
     if player1 != player2
       puts "That's not the word!"
 
@@ -55,14 +56,16 @@ class Word_guess_game
     	  end
       end
 
-    	dashes = p1_index.join('') # Prints out what letter they got right
-      p "Hint: " + dashes
-
-      if history.include?(player2)
-        @count += 0
+      if history.include?(player2) # Checks if word has been used already
+        puts "You have already tried #{player2}!"
       else
         @count += 1
       end
+
+    	dashes = p1_index.join('') # Prints out what letter they got right
+      p "Hint: " + dashes
+
+
 
       @game_over
 
@@ -72,9 +75,22 @@ class Word_guess_game
 
   end
 
+  # def print_hint
+  #   p "Hint: " + @dashes
+  # end
+  #
+  # def count
+  #   if history.include?(player2) # Checks if word has been used already
+  #     puts "You have already tried #{player2}!"
+  #   else
+  #     @count += 1
+  #   end
+  # end
+
 end
 
 # User Interface
+system "clear"
 
 puts "Welcome to Guess That Word!!"
 puts "Player 1, input word to guess:"
