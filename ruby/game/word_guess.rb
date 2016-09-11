@@ -44,6 +44,7 @@ class Word_guess_game
 
   def check_word
     if @player1_word != @player2_guess
+      system "clear"
       puts "That's not the word!"
 
     	p1_index = dashes
