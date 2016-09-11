@@ -25,28 +25,30 @@
 # steps:
 # output:
 
+
+
 class Word_guess_game
   attr_reader :history
-  attr_accessor :player1, :player2, :count, :game_over, :dashes
+  attr_accessor :player1_word, :player2_guess, :count, :game_over, :dashes
 
-  def initialize
+  def initialize(player1_word)
+    @player1_word = player1_word
+    @player2_guess = player2_guess
     @game_over = false
     @complete = false
     @count = 0
     @history = []
+    @dashes = []
 
   end
 
   def check_word
-    history << player2
-    p history
-    p player2
-    if player1 != player2
+    if @player1_word != @player2_guess
       puts "That's not the word!"
 
     	p1_index = dashes
-    	p1_split = player1.split('')
-    	p2_split = player2.split('')
+    	p1_split = @player1_word.split('')
+    	p2_split = @player2_guess.split('')
 
     	p2_split.each do |letter| # Compares all letters
     	  if p1_split.include?(letter)
@@ -56,37 +58,23 @@ class Word_guess_game
     	  end
       end
 
-      if history.include?(player2) # Checks if word has been used already
-        puts "You have already tried #{player2}!"
-      else
-        @count += 1
-      end
-
     	dashes = p1_index.join('') # Prints out what letter they got right
       p "Hint: " + dashes
 
-
-
       @game_over
-
     else
       @game_over = true
     end
-
   end
 
-  # def print_hint
-  #   p "Hint: " + @dashes
-  # end
-  #
-  # def count
-  #   if history.include?(player2) # Checks if word has been used already
-  #     puts "You have already tried #{player2}!"
-  #   else
-  #     @count += 1
-  #   end
-  # end
-
+  def hint_count(guess)
+    if @history.include?(guess) # Checks if word has been used already
+      puts "You have already tried #{guess}!"
+    else
+      @count += 1
+      @history << guess
+    end
+  end
 end
 
 # User Interface
@@ -94,26 +82,28 @@ system "clear"
 
 puts "Welcome to Guess That Word!!"
 puts "Player 1, input word to guess:"
-
-game = Word_guess_game.new
-game.player1 = gets.chomp.downcase
-system "clear"
-game.dashes = ("-" * game.player1.length).split('')
+player1_word = gets.chomp.downcase
 
 # Driver Code
 
+game = Word_guess_game.new(player1_word)
+system "clear"
+game.dashes = ("-" * game.player1_word.length).split('')
+
 while game.game_over != true
-  guesses = game.player1.length - game.count
+  guesses = game.player1_word.length - game.count
 
   if game.game_over != true && guesses != 0
-    guesses = game.player1.length - game.count
+    guesses = game.player1_word.length - game.count
     puts "Player 2, You have #{guesses}, Guess the word:"
-    game.player2 = gets.chomp.downcase
+    game.player2_guess = gets.chomp.downcase
     game.check_word
+    game.hint_count(game.player2_guess)
   elsif game.game_over != true && guesses == 0
     puts "You ran out of guesses!! GAME OVER!!"
     game.game_over = true
   end
+
 end
 
 if game.game_over == true && guesses != 0
