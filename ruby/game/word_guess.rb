@@ -1,9 +1,3 @@
-# One user can enter a word (or phrase, if you would like your game to support that), and another user attempts to guess the word.
-# Guesses are limited, and the number of guesses available is related to the length of the word.
-# Repeated guesses do not count against the user.
-# The guessing player receives continual feedback on the current state of the word. So if the secret word is "unicorn", the user will
-# start out seeing something like "_ _ _ _ _ _ _", which would become "_ _ _ c _ _ _" after the user enters a guess of "c".
-# The user should get a congratulatory message if they win, and a taunting message if they lose.
 
 # Method Code
 # input: Player 1 User Inputs main word to guess
@@ -15,17 +9,20 @@
         # Show how many guesses player 2 has
 # output: String, integer
 
+# Method for player 2 input
 # input: Player 2 User Inputs word to guess the main word
 # steps:
         # Ask player 2 for word input
         # Store guess word into a variable
 # output: String
 
-# input:
+# Method for determining if guess number goes down
+# input: Player 2 input
 # steps:
-# output:
-
-
+        # See if player 2 guess is included in history array
+        # If it is, output they have already guessed That
+        # If it isn't, add 1 to count and subtract from current guess
+# output: integer
 
 class Word_guess_game
   attr_reader :history
@@ -68,13 +65,14 @@ class Word_guess_game
     end
   end
 
-  def hint_count(guess)
-    if @history.include?(guess) # Checks if word has been used already
+  def hint_count(guess) # Checks if word has been used already
+    if @history.include?(guess)
       puts "You have already tried #{guess}!"
     else
       @count += 1
       @history << guess
     end
+
   end
 end
 
@@ -108,6 +106,5 @@ while game.game_over != true
 end
 
 if game.game_over == true && guesses != 0
-# p game.game_over
  puts "You got it correct! Game over!"
 end
