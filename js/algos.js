@@ -15,7 +15,8 @@ var longest_word = function(arr){
     index[i] = arr[i].length;
   }
   console.log(index);
-  var largest = index.indexOf(Math.max(...index));
+  // var largest = index.indexOf(Math.max(...index));
+  var largest = index.indexOf(Math.max.apply(null, index));
   console.log(largest);
   console.log(arr[largest]);
 };
