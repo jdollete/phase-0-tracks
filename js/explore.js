@@ -1,9 +1,17 @@
 // Take word and save it to a variable
 // Split word into an array
-// Iterate through array by moving the first letter to the last until the word is reversed
+// Reverse array, then join array
+var word_reverse = function(word){
+  var new_word = word.toLowerCase().split('').reverse().join('');
+  if (word == new_word) {
+    console.log("This is a palindrone!");
+  }
+  else {
+    console.log("The reverse word is: " + new_word);
+  }
+};
 
-var greet = "hello";
-
-for (var i = 0, i ) {
-
-}
+word_reverse("racecar");
+word_reverse("booom");
+word_reverse("vroooom");
+word_reverse("eye");
