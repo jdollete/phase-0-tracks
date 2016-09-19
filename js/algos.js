@@ -81,7 +81,7 @@ var random_test = function(int){
       }
     test_arr[i] = str.join('');
   }
-  console.log(test_arr);
+  // console.log(test_arr);
   longest_word(test_arr);
 };
 
@@ -106,4 +106,4 @@ var person2 = {
 value_match(person1, person2);
 
 // Driver Code - Random Test Data ----------------------------------------------
-random_test(5);
+random_test(10);
