@@ -64,8 +64,23 @@ steps:
   2. Create new array with the amount inputted as the length of the array
   3. Push in random letters ranging from 1-10 letters
 output: Array
-------------------------------------------------------------------------------*/
 
+Personal Notes:
+Return a random number between 1 and 10:
+Math.floor((Math.random() * 10) + 1);
+------------------------------------------------------------------------------*/
+var random_test = function(int){
+  var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var test_arr =[];
+  for (var i = 0; i < int; i++){
+    var str = [];
+      for (var j = 0; i < Math.floor((Math.random() * 10) + 1); j++ ) {
+        str = alpha[Math.floor((Math.random() * 25) + 0)];
+      }
+    test_arr[i] = str;
+  }
+  console.log(test_arr);
+};
 
 
 
@@ -88,3 +103,4 @@ output: Array
 value_match(person1, person2);
 
 // Driver Code - Random Test Data ----------------------------------------------
+random_test(3);
