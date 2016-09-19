@@ -57,25 +57,34 @@ var value_match = function(person1, person2){
 };
 
 
+/*------------------------------------------------------------------------------
+input: integer
+steps:
+  1. User inputs an integer
+  2. Create new array with the amount inputted as the length of the array
+  3. Push in random letters ranging from 1-10 letters
+output: Array
+------------------------------------------------------------------------------*/
+
+
+
+
 // Driver Code - Longest Word --------------------------------------------------
 // longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
 
 // Driver Code - Key-Value Match------------------------------------------------
-var person1 = {
-  name: "John",
-  age: 50,
-  height: 5
-};
-
-var person2 = {
-  name: "Casper",
-  age: 54,
-  height: 5
-};
+// var person1 = {
+//   name: "John",
+//   age: 50,
+//   height: 5
+// };
+//
+// var person2 = {
+//   name: "Casper",
+//   age: 54,
+//   height: 5
+// };
 
 value_match(person1, person2);
 
-// Driver Code - Longest Word --------------------------------------------------
-// longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
-
-// Driver Code - Key-Value Match------------------------------------------------
+// Driver Code - Random Test Data ----------------------------------------------
