@@ -11,14 +11,15 @@ output: str
 
 var longest_word = function(arr){
   var index = [];
+  console.log(arr);
   for (var i = 0; i < arr.length; i++){
     index[i] = arr[i].length;
   }
-  console.log(index);
+  // console.log(index);
   // var largest = index.indexOf(Math.max(...index));
   var largest = index.indexOf(Math.max.apply(null, index));
   // console.log(largest);
-  console.log(arr[largest]);
+  console.log("The longest word is: " + arr[largest]);
 };
 
 /*------------------------------------------------------------------------------
@@ -26,24 +27,55 @@ input: objects
 steps:
   1. Take in two objects and pass it into the function
   2. Do an iteration through the objects and see if there are any matches
-  3. If there is a match, return true, else return false
+  3. At the first instance there is a match, stop and return true
+  4. If iteration does not come back with a match, return false
 output: True/False
-------------------------------------------------------------------------------*/
-var value_match = function(obj1, obj2){
 
+Personal Notes:
+// Source MDN
+// prop will give the key of the object
+// obj[prop] will give the value of that key in the object
+var obj = {a:1, b:2, c:3};
+for (var prop in obj) {
+  console.log("obj." + prop + " = " + obj[prop]);
 }
+
+// Output:
+// "obj.a = 1"
+// "obj.b = 2"
+// "obj.c = 3"
+------------------------------------------------------------------------------*/
+var value_match = function(person1, person2){
+  for (var key in person1) {
+    if (person2[key] == person1[key]) {
+      console.log("There's a match!");
+      return true;
+    }
+  }
+  console.log("No matches found!");
+  return false;
+};
 
 
 // Driver Code - Longest Word --------------------------------------------------
-longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
+// longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
 
 // Driver Code - Key-Value Match------------------------------------------------
 var person1 = {
   name: "John",
-  age: 54
+  age: 50,
+  height: 5
 };
 
 var person2 = {
   name: "Casper",
-  age: 54
+  age: 54,
+  height: 5
 };
+
+value_match(person1, person2);
+
+// Driver Code - Longest Word --------------------------------------------------
+// longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
+
+// Driver Code - Key-Value Match------------------------------------------------
