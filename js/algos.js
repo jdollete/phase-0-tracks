@@ -16,7 +16,7 @@ var longest_word = function(arr){
     index[i] = arr[i].length;
   }
   // console.log(index);
-  // var largest = index.indexOf(Math.max(...index));
+  // var largest = index.indexOf(Math.max(...index)); // Spread method does not work on some JS versions
   var largest = index.indexOf(Math.max.apply(null, index));
   // console.log(largest);
   console.log("The longest word is: " + arr[largest]);
@@ -61,8 +61,10 @@ var value_match = function(person1, person2){
 input: integer
 steps:
   1. User inputs an integer
-  2. Create new array with the amount inputted as the length of the array
-  3. Push in random letters ranging from 1-10 letters
+  2. Create new array  with the amount inputted as the of interations
+  3. Push in random letters ranging from 1-10 letters in another iteration
+  4. Randomly pick letters from the alphabet to put in a random array
+  5. Join the random array and push it into main array
 output: Array
 
 Personal Notes:
@@ -74,33 +76,34 @@ var random_test = function(int){
   var test_arr =[];
   for (var i = 0; i < int; i++){
     var str = [];
-      for (var j = 0; i < Math.floor((Math.random() * 10) + 1); j++ ) {
-        str = alpha[Math.floor((Math.random() * 25) + 0)];
+      for (var j = 0; j < Math.floor((Math.random() * 10) + 1); j++ ) {
+        str[j] = alpha[Math.floor((Math.random() * 25) + 0)];
       }
-    test_arr[i] = str;
+    test_arr[i] = str.join('');
   }
   console.log(test_arr);
+  longest_word(test_arr);
 };
 
 
 
 // Driver Code - Longest Word --------------------------------------------------
-// longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
+longest_word(['howdy', 'hola', 'buenos dias', 'bonjour', 'ciao', 'namaste']);
 
 // Driver Code - Key-Value Match------------------------------------------------
-// var person1 = {
-//   name: "John",
-//   age: 50,
-//   height: 5
-// };
-//
-// var person2 = {
-//   name: "Casper",
-//   age: 54,
-//   height: 5
-// };
+var person1 = {
+  name: "John",
+  age: 50,
+  height: 5
+};
+
+var person2 = {
+  name: "Casper",
+  age: 54,
+  height: 5
+};
 
 value_match(person1, person2);
 
 // Driver Code - Random Test Data ----------------------------------------------
-random_test(3);
+random_test(5);
