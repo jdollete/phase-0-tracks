@@ -1,0 +1,105 @@
+Release 2: Execute SQL Queries
+
+-- Display the information in one table (either table is fine).
+
+select * from hogwarts_students;
+
+1|Dumbledore|Albus|1881|false|false|1
+2|Potter|Harry|1980|false|true|1
+3|Weasley|Fred|1978|true|false|1
+4|Parkinson|Pansy|1980|true|true|4
+5|Malfoy|Draco|1980|true|true|4
+6|Macmillian|Ernie|1980|true|true|2
+7|Longbottom|Neville|1980|true|true|1
+8|Diggory|Cedric|1977|true|false|2
+9|Chang|Cho|1979|false|false|3
+10|Patil|Padma|1980|false|false|3
+11|Lovegood|Luna|1981|true|true|3
+12|Bones|Susan|1980|false|true|2
+13|Finch-Fletchley|Justin|1980|false|true|2
+14|Weasley|George|1978|true|true|1
+15|Snape|Severus|1960|false|false|4
+
+-- Update an item that meets some condition (you can choose a condition that makes sense).
+
+update house set student_count = 65 where id = 1;
+select * from house;
+
+1|Gryffindor|Scarlet and Gold|65
+2|Hufflepuff|Yellow and Black|70
+3|Ravenclaw|Blue and Bronze|70
+4|Slytherin|Emerald and Silver|70
+
+-- Display the information in both tables using one query.
+
+select * from hogwarts_students, house
+where hogwarts_students.house_id = house.id;
+
+1|Dumbledore|Albus|1881|false|false|1|1|Gryffindor|Scarlet and Gold|65
+2|Potter|Harry|1980|false|true|1|1|Gryffindor|Scarlet and Gold|65
+3|Weasley|Fred|1978|true|false|1|1|Gryffindor|Scarlet and Gold|65
+4|Parkinson|Pansy|1980|true|true|4|4|Slytherin|Emerald and Silver|70
+5|Malfoy|Draco|1980|true|true|4|4|Slytherin|Emerald and Silver|70
+6|Macmillian|Ernie|1980|true|true|2|2|Hufflepuff|Yellow and Black|70
+7|Longbottom|Neville|1980|true|true|1|1|Gryffindor|Scarlet and Gold|65
+8|Diggory|Cedric|1977|true|false|2|2|Hufflepuff|Yellow and Black|70
+9|Chang|Cho|1979|false|false|3|3|Ravenclaw|Blue and Bronze|70
+10|Patil|Padma|1980|false|false|3|3|Ravenclaw|Blue and Bronze|70
+11|Lovegood|Luna|1981|true|true|3|3|Ravenclaw|Blue and Bronze|70
+12|Bones|Susan|1980|false|true|2|2|Hufflepuff|Yellow and Black|70
+13|Finch-Fletchley|Justin|1980|false|true|2|2|Hufflepuff|Yellow and Black|70
+14|Weasley|George|1978|true|true|1|1|Gryffindor|Scarlet and Gold|65
+15|Snape|Severus|1960|false|false|4|4|Slytherin|Emerald and Silver|70
+
+-- Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+select hogwarts_students.id, hogwarts_students.first_name, hogwarts_students.last_name, hogwarts_students.year_born, house.house_name
+from hogwarts_students
+join house
+on hogwarts_students.house_id = house.id;
+
+1|Albus|Dumbledore|1881|Gryffindor
+2|Harry|Potter|1980|Gryffindor
+3|Fred|Weasley|1978|Gryffindor
+4|Pansy|Parkinson|1980|Slytherin
+5|Draco|Malfoy|1980|Slytherin
+6|Ernie|Macmillian|1980|Hufflepuff
+7|Neville|Longbottom|1980|Gryffindor
+8|Cedric|Diggory|1977|Hufflepuff
+9|Cho|Chang|1979|Ravenclaw
+10|Padma|Patil|1980|Ravenclaw
+11|Luna|Lovegood|1981|Ravenclaw
+12|Susan|Bones|1980|Hufflepuff
+13|Justin|Finch-Fletchley|1980|Hufflepuff
+14|George|Weasley|1978|Gryffindor
+15|Severus|Snape|1960|Slytherin
+
+-- Delete an item that meets some condition (you can choose a condition that makes sense).
+
+delete from hogwarts_students where alive = "false";
+select hogwarts_students.id, hogwarts_students.first_name, hogwarts_students.last_name, hogwarts_students.year_born, house.house_name
+from hogwarts_students
+join house
+on hogwarts_students.house_id = house.id;
+
+2|Harry|Potter|1980|Gryffindor
+4|Pansy|Parkinson|1980|Slytherin
+5|Draco|Malfoy|1980|Slytherin
+6|Ernie|Macmillian|1980|Hufflepuff
+7|Neville|Longbottom|1980|Gryffindor
+11|Luna|Lovegood|1981|Ravenclaw
+12|Susan|Bones|1980|Hufflepuff
+13|Justin|Finch-Fletchley|1980|Hufflepuff
+14|George|Weasley|1978|Gryffindor
+
+-- Try a few different joins in your database.
+
+select hogwarts_students.id, hogwarts_students.last_name, house.house_name
+from hogwarts_students
+inner join house
+on hogwarts_students.house_id = house.id
+where hogwarts_students.house_id = 1;
+
+2|Potter|Gryffindor
+7|Longbottom|Gryffindor
+14|Weasley|Gryffindor
