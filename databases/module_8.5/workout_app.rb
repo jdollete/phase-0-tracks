@@ -25,18 +25,79 @@ SQL
 # end
 
 # Insert into the current table
-def insert_workout(db, date)
-  puts "Please Insert Workout Details"
-  puts "Workout: "
-  workout = gets.chomp
-  puts "Weight (lb): "
-  weight = gets.to_i
-  puts "Reps: "
-  reps = gets.to_i
+def insert_workout(db, date, user_continue)
+  while user_continue != 'no'
+    system ("clear")
+    puts "---Get Swole App---".center(150)
 
-  db.execute("INSERT INTO workout_data (date_workout, workout, weight, reps) VALUES (?, ?, ?, ?)", [date, workout, weight, reps])
+    puts "Please Insert Workout Details"
+    puts "Workout: "
+    workout = gets.chomp
+    puts "Weight (lb): "
+    weight = gets.to_i
+    puts "Reps: "
+    reps = gets.to_i
+    db.execute("INSERT INTO workout_data (date_workout, workout, weight, reps) VALUES (?, ?, ?, ?)", [date, workout, weight, reps])
+
+    puts "Do you have more to add? (yes/no)"
+    user_continue = gets.chomp.downcase
+  end
+end
+#-------------------------------------------------------------------------------
+def data_modify(db, user_continue)
+  while user_continue != 'no'
+    system ("clear")
+    puts "---Get Swole App---".center(150)
+
+    puts "Here is your current information"
+
+    db.execute("SELECT * FROM workout_data;").each do |row|
+      puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
+    end
+
+    puts "Which line would you like to modify?"
+    modify_line = gets.to_i # Row ID
+    puts "What Column? [workout/weight/reps]"
+    modify_column = gets.chomp  # Attribute
+    puts "New Value?"
+
+    if modify_column == "weight" || modify_column == "reps" # Value
+      modify_value = gets.to_i
+      if modify_column == "weight"
+        db.execute("UPDATE workout_data SET weight = ? WHERE id = ?", [modify_value, modify_line])
+      else
+        db.execute("UPDATE workout_data SET reps = ? WHERE id = ?", [modify_value, modify_line])
+      end
+    else
+      modify_value = gets.chomp
+      db.execute("UPDATE workout_data SET workout = ? WHERE id = ?", [modify_value, modify_line])
+    end
+
+    puts "Would you like to modify something else? (yes/no)"
+    user_continue = gets.chomp
+  end
+end
+#-------------------------------------------------------------------------------
+def data_delete(db)
+end
+#-------------------------------------------------------------------------------
+def view_data(db)
+  system ("clear")
+  puts "---Get Swole App---".center(150)
+  # p db.execute("SELECT * FROM workout_data;")
+  db.execute("SELECT * FROM workout_data;").each do |row|
+    puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
+  end
 end
 
+
+
+
+# Helper Code ------------------------------------------------------------------
+# clear = system ("clear")
+# title_app = puts "---Get Swole App---".center(150)
+# refresh = clear, title_app # Did not work
+user_continue = ""
 # User Interface ---------------------------------------------------------------
 =begin
 - Welcome User by asking their name
@@ -45,39 +106,38 @@ end
     - This will create a new table
     - User will add input a date which will name the table
 =end
-clear = system ("clear")
-title_app = puts "---Get Swole App---".center(150)
-refresh = clear, title_app
 
-refresh
+system ("clear")
+puts "---Get Swole App---".center(150)
 puts "Input Name:"
 user_name = gets.chomp
 
-refresh
+system ("clear")
+puts "---Get Swole App---".center(150)
 puts "Welcome #{user_name}, What is today's date? [mmddyyyy]"
 date = gets.to_i
 db.execute(create_table_cmd)
 
-refresh
+system ("clear")
+puts "---Get Swole App---".center(150)
 puts "What would you like to do today?"
 puts "[Insert/Modify/Delete/View/Done]"
 user_input = gets.chomp.downcase
 
 while user_input != 'done'
   if user_input == 'insert'
-    refresh
-    insert_workout(db,date)
+    insert_workout(db,date, user_continue)
   elsif user_input == 'modify'
-    refresh
+    data_modify(db, user_continue)
   elsif user_input == 'delete'
-    refresh
+    data_delete(db)
   elsif user_input == 'view'
-    refresh
-    db.execute("SELECT * FROM sqlite_temp_master WHERE type='table'")
+    view_data(db)
   else
     puts "Invalid Entry"
   end
-  clear
+
+
   puts "Anything else you want to do? [new/insert/modify/delete/view/done]"
   user_input = gets.chomp.downcase
 end
