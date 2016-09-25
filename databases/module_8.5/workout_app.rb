@@ -1,7 +1,7 @@
 # An app to record your swole-ness
 # Require gems
 require 'sqlite3'
-require 'faker'
+# require 'faker'
 
 # Create database
 db = SQLite3::Database.new("workouts.db")
@@ -19,12 +19,13 @@ SQL
 
 
 # Method Code ------------------------------------------------------------------
-# Create Table when a new entry is being made
-# def new_entry(db, create_table_cmd)
-#   db.execute(create_table_cmd,[date])
-# end
+# Input: String
+# Step:
+#   - Ask user to input workout, weight, and reps Value
+#   - Input values into Database
+#   - Until user inputs they are done, loop through the Method
+# Output: Updated Database
 
-# Insert into the current table
 def insert_workout(db, date, user_continue)
   while user_continue != 'no'
     system ("clear")
@@ -44,6 +45,13 @@ def insert_workout(db, date, user_continue)
   end
 end
 #-------------------------------------------------------------------------------
+# Input: String
+# Step:
+#   - Ask User what they want to Update
+#   - Ask for new Value
+#   - Loop until user inputs done
+# Output: Updated Database
+
 def data_modify(db, user_continue)
   while user_continue != 'no'
     system ("clear")
@@ -78,6 +86,13 @@ def data_modify(db, user_continue)
   end
 end
 #-------------------------------------------------------------------------------
+# Input: Integer
+# Step:
+#   - Ask User what they want to delete
+#   - Delete input from Database
+#   - Until user inputs done loop again
+# Output: Updated Database
+
 def data_delete(db, user_continue)
   while user_continue != "no"
     system ("clear")
@@ -113,10 +128,9 @@ user_continue = ""
 # User Interface ---------------------------------------------------------------
 =begin
 - Welcome User by asking their name
+- Ask user for today's date
 - Ask user what actions they would like to do
-  - `Create` a new entry
-    - This will create a new table
-    - User will add input a date which will name the table
+- Keep looping until user is done
 =end
 
 system ("clear")
@@ -148,7 +162,6 @@ while user_input != 'done'
   else
     puts "Invalid Entry"
   end
-
 
   puts "Anything else you want to do? [new/insert/modify/delete/view/done]"
   user_input = gets.chomp.downcase
