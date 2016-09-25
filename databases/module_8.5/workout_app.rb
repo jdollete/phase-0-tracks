@@ -7,27 +7,26 @@ require 'faker'
 db = SQLite3::Database.new("workouts.db")
 db.results_as_hash = true
 
+create_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS workout_data (
+    id INTEGER PRIMARY KEY,
+    date_workout INT,
+    workout VARCHAR(255),
+    weight INT,
+    reps INT
+  )
+SQL
+
+
 # Method Code ------------------------------------------------------------------
 # Create Table when a new entry is being made
-def new_entry
-  puts "Enter Date [mmddyyyy]: "
-  date = gets.to_i
-
-  new_table_cmd = <<-SQL
-    CREATE TABLE date (
-      id INTEGER PRIMARY KEY,
-      workout VARCHAR(255),
-      weight INT,
-      reps INT
-    )
-  SQL
-
-end
+# def new_entry(db, create_table_cmd)
+#   db.execute(create_table_cmd,[date])
+# end
 
 # Insert into the current table
-def insert_workout(db)
-  puts "What date?"
-  date = gets.to_i
+def insert_workout(db, date)
+  puts "Please Insert Workout Details"
   puts "Workout: "
   workout = gets.chomp
   puts "Weight (lb): "
@@ -35,7 +34,7 @@ def insert_workout(db)
   puts "Reps: "
   reps = gets.to_i
 
-  db.execute("INSERT INTO ? (workout, weight, reps) VALUES (?, ?, ?)", [date, workout, weight, reps])
+  db.execute("INSERT INTO workout_data (date_workout, workout, weight, reps) VALUES (?, ?, ?, ?)", [date, workout, weight, reps])
 end
 
 # User Interface ---------------------------------------------------------------
@@ -45,32 +44,40 @@ end
   - `Create` a new entry
     - This will create a new table
     - User will add input a date which will name the table
-
-
-
-
 =end
 clear = system ("clear")
-clear
-puts "---Get Swole App---"
+title_app = puts "---Get Swole App---".center(150)
+refresh = clear, title_app
+
+refresh
 puts "Input Name:"
 user_name = gets.chomp
-clear
-puts "Welcome #{user_name}, What would you like to do today?"
-puts "[new/insert/modify/delete/view/done]"
-user_input = gets.chomp
+
+refresh
+puts "Welcome #{user_name}, What is today's date? [mmddyyyy]"
+date = gets.to_i
+db.execute(create_table_cmd)
+
+refresh
+puts "What would you like to do today?"
+puts "[Insert/Modify/Delete/View/Done]"
+user_input = gets.chomp.downcase
 
 while user_input != 'done'
-  if user_input == 'new'
-    new_entry
-  elsif user_input == "insert"
-    insert_workout(db)
+  if user_input == 'insert'
+    refresh
+    insert_workout(db,date)
+  elsif user_input == 'modify'
+    refresh
+  elsif user_input == 'delete'
+    refresh
   elsif user_input == 'view'
-    db.execute(".table")
+    refresh
+    db.execute("SELECT * FROM sqlite_temp_master WHERE type='table'")
   else
     puts "Invalid Entry"
   end
   clear
   puts "Anything else you want to do? [new/insert/modify/delete/view/done]"
-  user_input = gets.chomp
+  user_input = gets.chomp.downcase
 end
