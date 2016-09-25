@@ -78,13 +78,25 @@ def data_modify(db, user_continue)
   end
 end
 #-------------------------------------------------------------------------------
-def data_delete(db)
+def data_delete(db, user_continue)
+  while user_continue != "no"
+    system ("clear")
+    puts "---Get Swole App---".center(150)
+    db.execute("SELECT * FROM workout_data;").each do |row|
+      puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
+    end
+    puts "Which Line would you like to delete?"
+    line_delete = gets.to_i
+    db.execute("DELETE FROM workout_data WHERE id = ?", [line_delete])
+
+    puts "Would you like to delete something else? (yes/no)"
+    user_continue = gets.chomp
+  end
 end
 #-------------------------------------------------------------------------------
 def view_data(db)
   system ("clear")
   puts "---Get Swole App---".center(150)
-  # p db.execute("SELECT * FROM workout_data;")
   db.execute("SELECT * FROM workout_data;").each do |row|
     puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
   end
@@ -130,7 +142,7 @@ while user_input != 'done'
   elsif user_input == 'modify'
     data_modify(db, user_continue)
   elsif user_input == 'delete'
-    data_delete(db)
+    data_delete(db, user_continue)
   elsif user_input == 'view'
     view_data(db)
   else
