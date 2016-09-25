@@ -1,4 +1,39 @@
 # An app to record your swole-ness
+
+# Insert New Rows
+# Input: String
+# Step:
+#   - Ask user to input workout, weight, and reps Value
+#   - Input values into Database
+#   - Until user inputs they are done, loop through the Method
+# Output: Updated Database
+
+# Update Rows
+# Input: String
+# Step:
+#   - Ask User what they want to Update
+#   - Ask for new Value
+#   - Loop until user inputs done
+# Output: Updated Database
+
+# Delete Rows
+# Input: Integer
+# Step:
+#   - Ask User what they want to delete
+#   - Delete input from Database
+#   - Until user inputs done loop again
+# Output: Updated Database
+
+# User Interface
+# Input: String
+# Steps:
+#   - Welcome User by asking their name
+#   - Ask user for today's date
+#   - Ask user what actions they would like to do
+#   - Keep looping until user is done
+# Output: Updated Database
+
+
 # Require gems
 require 'sqlite3'
 # require 'faker'
@@ -19,13 +54,6 @@ SQL
 
 
 # Method Code ------------------------------------------------------------------
-# Input: String
-# Step:
-#   - Ask user to input workout, weight, and reps Value
-#   - Input values into Database
-#   - Until user inputs they are done, loop through the Method
-# Output: Updated Database
-
 def insert_workout(db, date, user_continue)
   while user_continue != 'no'
     system ("clear")
@@ -45,20 +73,13 @@ def insert_workout(db, date, user_continue)
   end
 end
 #-------------------------------------------------------------------------------
-# Input: String
-# Step:
-#   - Ask User what they want to Update
-#   - Ask for new Value
-#   - Loop until user inputs done
-# Output: Updated Database
-
 def data_modify(db, user_continue)
   while user_continue != 'no'
     system ("clear")
     puts "---Get Swole App---".center(150)
 
     puts "Here is your current information"
-
+    puts '[Line ID -- Workout -- Weight -- Reps]'
     db.execute("SELECT * FROM workout_data;").each do |row|
       puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
     end
@@ -86,17 +107,11 @@ def data_modify(db, user_continue)
   end
 end
 #-------------------------------------------------------------------------------
-# Input: Integer
-# Step:
-#   - Ask User what they want to delete
-#   - Delete input from Database
-#   - Until user inputs done loop again
-# Output: Updated Database
-
 def data_delete(db, user_continue)
   while user_continue != "no"
     system ("clear")
     puts "---Get Swole App---".center(150)
+    puts '[Line ID -- Workout -- Weight -- Reps]'
     db.execute("SELECT * FROM workout_data;").each do |row|
       puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
     end
@@ -112,6 +127,7 @@ end
 def view_data(db)
   system ("clear")
   puts "---Get Swole App---".center(150)
+  puts '[Line ID -- Workout -- Weight -- Reps]'
   db.execute("SELECT * FROM workout_data;").each do |row|
     puts "#{row["id"]} - #{row["date_workout"]} - #{row["workout"]} - #{row["weight"]}lbs - #{row["reps"]} reps"
   end
@@ -125,14 +141,8 @@ end
 # title_app = puts "---Get Swole App---".center(150)
 # refresh = clear, title_app # Did not work
 user_continue = ""
-# User Interface ---------------------------------------------------------------
-=begin
-- Welcome User by asking their name
-- Ask user for today's date
-- Ask user what actions they would like to do
-- Keep looping until user is done
-=end
 
+# User Interface ---------------------------------------------------------------
 system ("clear")
 puts "---Get Swole App---".center(150)
 puts "Input Name:"
@@ -149,7 +159,7 @@ puts "---Get Swole App---".center(150)
 puts "What would you like to do today?"
 puts "[Insert/Modify/Delete/View/Done]"
 user_input = gets.chomp.downcase
-
+# Driver Code ------------------------------------------------------------------
 while user_input != 'done'
   if user_input == 'insert'
     insert_workout(db,date, user_continue)
@@ -163,6 +173,6 @@ while user_input != 'done'
     puts "Invalid Entry"
   end
 
-  puts "Anything else you want to do? [new/insert/modify/delete/view/done]"
+  puts "Anything else you want to do? [insert/modify/delete/view/done]"
   user_input = gets.chomp.downcase
 end
