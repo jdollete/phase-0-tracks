@@ -10,8 +10,8 @@
    200 - OK  
    201 - Created   
    202 - Accepted   
-   203 - Non-Authoritative Information
-   204 - No Content
+   203 - Non-Authoritative Information  
+   204 - No Content  
    205 - Reset Content   
    206 - Partial Content  
 
@@ -56,4 +56,14 @@
 
 ## What is the difference between a GET request and a POST request? When might each be used?
 
+* Get Request - This will request data from a specific course
+
+  These are used for fetching documents
+
+* Post Request - This will submit data to be processed to a specific course  
+
+  These general are for updating the server  (Forms)
+
 ## Optional bonus question: What is a cookie (the technical kind, not the delicious kind)? How does it relate to HTTP requests?
+
+   HTTP cookie is data that has been sent from a server to the users browser that could store it and send back together with the next request to the same server. This is typically used to see if the request came from the same browser which allows to keep the user Logged on.   
