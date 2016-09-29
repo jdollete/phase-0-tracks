@@ -52,5 +52,16 @@ get '/address' do
 end
 
 # write a GET route that can take a person's name as a query parameter (not a route parameter)
+# input: http://localhost:9393/person_name/?name=Jill%20Valentine output: Welcome to Umbrella Corporation Jill Valentine.
+# input: http://localhost:9393/person_name/ output: Welcome to Umbrella Corporation, please sign in.
+
+get '/person_name/' do
+  name = params[:name]
+  if name
+    "Welcome to Umbrella Corporation #{params[:name]}."
+  else
+    "Welcome to Umbrella Corporation, please sign in."
+  end
+end
 
 # A route that uses route parameters to add two numbers and respond with the result.
