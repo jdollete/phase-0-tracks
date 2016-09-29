@@ -5,7 +5,9 @@ body {
 img {
   position: absolute;
   width: 100px;
-  /*visibility: hidden;*/
+  visibility: hidden;
+}
+
 }
 
 @font-face {
@@ -15,7 +17,7 @@ img {
 
 p.customfont {
   font-family: "HarryPotter", Helvetica;
-  position: absolute;;
+  position: absolute;
   font-size: 50px;
   color: white;
 }
@@ -26,21 +28,24 @@ p.customfont {
   left: 200px;
 }
 
+.logo {
+  position: absolute;
+  visibility: hidden;
+  width: 200px;
+  top: 290px;
+  left: 300px;
+}
+
 .p1 {
+  visibility: hidden;
   top: 100px;
   left: 100px;
 }
 
 .p2 {
+  visibility: hidden;
   top: 500px;
   left: 300px;
-}
-
-#button {
-  position: relative;
-  top: 50px;
-  left: 450px;
-  position: absolute;
 }
 
 .left1 {
