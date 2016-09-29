@@ -1,6 +1,7 @@
 # require gems
 require 'sinatra'
 require 'sqlite3'
+require 'faker'
 
 db = SQLite3::Database.new("students.db")
 db.results_as_hash = true
@@ -44,3 +45,12 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+# write a GET route that displays an address
+get '/address' do
+  "#{Faker::Address.street_address} <br>#{Faker::Address.city}, #{Faker::Address.state} #{Faker::Address.zip}"
+end
+
+# write a GET route that can take a person's name as a query parameter (not a route parameter)
+
+# A route that uses route parameters to add two numbers and respond with the result.
