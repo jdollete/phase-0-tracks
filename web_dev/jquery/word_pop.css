@@ -26,6 +26,13 @@ p.customfont {
   left: 200px;
 }
 
+.logo {
+  position: absolute;
+  width: 200px;
+  top: 250px;
+  left: 300px;
+}
+
 .p1 {
   top: 100px;
   left: 100px;
