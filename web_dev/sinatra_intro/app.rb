@@ -65,3 +65,11 @@ get '/person_name/' do
 end
 
 # A route that uses route parameters to add two numbers and respond with the result.
+# input: http://localhost:9393/add_it/1/5 output: 1 + 5 = 6
+# Needs to be a string when you want to show it on the browser
+get '/add_it/:num1/:num2' do
+  num1 = params[:num1]
+  num2 = params[:num2]
+  sum = num1.to_i + num2.to_i
+  "#{num1} + #{num2} = #{sum}"
+end
