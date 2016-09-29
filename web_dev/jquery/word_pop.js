@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('p.customfont.title').click(function() {
+  $('p.customfont.title').hover(function() {
     $('p.customfont.title').fadeOut(1000);
     $('p.customfont.p1').delay(1000).css('visibility','visible').hide().fadeIn(2500);
     $('p.customfont.p2').delay(2500).css('visibility','visible').hide().fadeIn(2500);
