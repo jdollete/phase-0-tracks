@@ -5,24 +5,47 @@
   <meta charset="UTF-8">
   <title>Words on Words</title>
   <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
-  <style>
+  <style type = "text/css">
     body {
       background-color: black;
-      /*font-family: helvetica;*/
-      position: relative;
-      top: 350px;
-      left: 400px;
-
-      p {
-        
       }
+
+    @font-face {
+      font-family: "HarryPotter";
+      src: url(https://github.com/jdollete/phase-0-tracks/blob/master/web_dev/jquery/HARRYP__.TTF);
     }
+
+    p.customfont {
+      font-family: "HarryPotter", Helvetica;
+      position: relative;
+      font-size: 50px;
+      color: white;
+    }
+
+    .p1 {
+      top: 100px;
+      left: 100px;
+    }
+
+    .p2 {
+      top: 400px;
+      left: 300px;
+    }
+
+    #button {
+      position: relative;
+      top: 50px;
+      left: 450px;
+      position: absolute;
+    }
+
   </style>
 </head>
+
 <body>
   <div>
-    <p id = "p1">I Solemnly Swear....</p>
-    <p id = "p2">....That I'm Up To No Good.</p>
+    <p class = "customfont p1">I Solemnly Swear....</p>
+    <p class = "customfont p2">....That I'm Up To No Good.</p>
   </div>
   <div>
     <button type = "button" id = "button">CLICK IT!!</button>
