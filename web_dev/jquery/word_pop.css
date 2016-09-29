@@ -8,8 +8,6 @@ img {
   visibility: hidden;
 }
 
-}
-
 @font-face {
   font-family: "HarryPotter";
   src: url(HARRYP__.TTF);
@@ -17,7 +15,7 @@ img {
 
 p.customfont {
   font-family: "HarryPotter", Helvetica;
-  position: absolute;
+  position: absolute;;
   font-size: 50px;
   color: white;
 }
@@ -28,24 +26,23 @@ p.customfont {
   left: 200px;
 }
 
-.logo {
-  position: absolute;
-  visibility: hidden;
-  width: 200px;
-  top: 290px;
-  left: 300px;
-}
-
 .p1 {
-  visibility: hidden;
   top: 100px;
   left: 100px;
+  visibility: hidden;
 }
 
 .p2 {
-  visibility: hidden;
   top: 500px;
   left: 300px;
+  visibility: hidden;
+}
+
+#button {
+  position: relative;
+  top: 50px;
+  left: 450px;
+  position: absolute;
 }
 
 .left1 {
